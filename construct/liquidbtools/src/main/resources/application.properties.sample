@@ -1,0 +1,9 @@
+spring.main.web-application-type=none 
+liquidbtools.ignore.tables=LOCALE_CODE,TIME_ZONE
+liquidbtools.ignore.tables.partialmatch=UDF,APPLICATION_,GRID_
+liquidbtools.ignore.sequences.partialmatch=DATASECURITY,UDF
+liquidbtools.ignore.column.names.bytable=ERROR_MSG_CODE_LANG.MODIFY_USER,ERROR_MSG_CODE_LANG.MODIFY_DTTM,ERROR_MSG_CODE_LANG.CREATE_DTTM
+#liquidbtools.data.tablespace.name=default
+#liquidbtools.index.tablespace.name=default
+liquidbtools.logicalfile.prefix=com.onbelay
+application.name=dealcapture
