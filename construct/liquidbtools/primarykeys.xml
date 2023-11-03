@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://www.liquibase.org/xml/ns/dbchangelog" logicalFilePath="com.onbelay/dealcapture/snapshot/ddl/constraints/primarykeys.xml" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <ns2:changeSet author="onbelay" id="keys">
+        <ns2:addPrimaryKey columnNames="ENTITY_ID" constraintName="ORGANIZATION_PK" tableName="OB_ORGANIZATION" tablespace="pg_default"></ns2:addPrimaryKey>
+    </ns2:changeSet>
+</ns2:databaseChangeLog>

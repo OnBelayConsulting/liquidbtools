@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+<changeSet
+		author='invoicing'
+		id='1'
+	>
+		<insert tableName='BUY_SELL_CODE'>
+			<column name='CODE_CD' value='B'/>
+			<column name='CODE_LABEL' value='Buy'/>
+			<column name='DISPLAY_ORDER_NO' value='10'/>
+			<column name="LOCALE_LANGUAGE_CD" value="en"/>
+			<column name="LOCALE_COUNTRY_CD" value="CA"/>
+		</insert>
+		<insert tableName='BUY_SELL_CODE'>
+			<column name='CODE_CD' value='S'/>
+			<column name='CODE_LABEL' value='Sell'/>
+			<column name='DISPLAY_ORDER_NO' value='20'/>
+			<column name="LOCALE_LANGUAGE_CD" value="en"/>
+			<column name="LOCALE_COUNTRY_CD" value="CA"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>
