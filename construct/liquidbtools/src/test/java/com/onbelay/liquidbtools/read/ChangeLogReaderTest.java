@@ -24,7 +24,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader
                     .newReader(inputStream)
                     .withTableSpaceNames("DEFAULT_DATA", "DEFAULT_IDX");
@@ -122,7 +122,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader
                     .newReader(inputStream)
                     .withIgnoreTableNames(List.of("OB_ADDRESS"));
@@ -147,7 +147,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader
                     .newReader(inputStream)
                     .withIgnoreTableNamesPartialMatch(List.of("_CODE"));
@@ -173,7 +173,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader
                     .newReader(inputStream)
                     .withIgnoreSequenceNamesPartialMatch(List.of("ADDRESS_SQ"));
@@ -199,7 +199,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader.newReader(inputStream)
                     .withIgnoreColumnNamesAll(List.of("MODIFIED"));
             ChangeLogContainer result = reader.read();
@@ -226,7 +226,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
 
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/example.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("example.xml")) {
             ChangeLogReader reader = ChangeLogReader.newReader(inputStream)
                     .withIgnoreColumnNamesByTable(
                             Map.of(
@@ -259,7 +259,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
     public void readInserts() {
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = this.getClass().getResourceAsStream("/insertExample.xml")) {
+        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("insertExample.xml")) {
             ChangeLogReader reader = ChangeLogReader.newReader(inputStream);
             ChangeLogContainer result = reader.read();
             assertEquals(1, result.getInsertMap().keySet().size());
