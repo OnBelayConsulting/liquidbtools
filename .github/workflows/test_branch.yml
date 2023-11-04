@@ -20,9 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:jdk17-focal
 
-    permissions:
-      contents: read
-      packages: write
+    permissions: write-all
 
     steps:
     - uses: actions/checkout@v3
@@ -32,6 +30,10 @@ jobs:
     - name: set up gradlew for execution
       run: |
         chmod +x gradlew
+
+    - name: Copy overlays to support testing
+      run: |
+        ./gradlew copyAllOverlays
 
 
     - name: run gradle build
