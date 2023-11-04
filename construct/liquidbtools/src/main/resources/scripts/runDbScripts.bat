@@ -1,1 +1,1 @@
-java -jar liquidbtools.jar --spring.config.location=file://./application.properties everest_extract.xml
+java -jar liquidbtools.jar everest_extract.xml

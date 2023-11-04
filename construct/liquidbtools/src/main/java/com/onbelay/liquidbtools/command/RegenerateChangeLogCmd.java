@@ -94,7 +94,7 @@ public class RegenerateChangeLogCmd implements CommandLineRunner {
             ChangeLogReader reader = ChangeLogReader.newReader(inputStream);
             reader.withIgnoreColumnNamesByTable(ignoreColumnsByTableMap);
             if (ignoreColumnNamesList != null)
-                reader.withIgnoreColumnNamesAll(ignoreTableNamesList);
+                reader.withIgnoreColumnNamesAll(ignoreColumnNamesList);
             if (ignoreTableNamesList != null)
                 reader.withIgnoreTableNames(ignoreTableNamesList);
             if (ignoreTableNamesPartialMatchList != null)
