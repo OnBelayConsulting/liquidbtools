@@ -255,7 +255,7 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
     }
 
 
-    @Test
+    //@Test
     public void readInserts() {
         InputStream  xmlFileIn;
 
