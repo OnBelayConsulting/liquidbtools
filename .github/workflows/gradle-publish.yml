@@ -44,6 +44,10 @@ jobs:
       run: |
         chmod +x gradlew
 
+    - name: Copy overlays to support testing
+      run: |
+        ./gradlew copyAllOverlays
+
     - name: run gradle build
       run: |
         cd construct/liquidbtools
