@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -255,11 +256,11 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
     }
 
 
-    //@Test
+    @Test
     public void readInserts() {
         InputStream  xmlFileIn;
 
-        try (InputStream inputStream = ChangeLogReaderTest.class.getClassLoader().getResourceAsStream("insertExample.xml")) {
+        try (InputStream inputStream = buildInsertNode()) {
             ChangeLogReader reader = ChangeLogReader.newReader(inputStream);
             ChangeLogContainer result = reader.read();
             assertEquals(1, result.getInsertMap().keySet().size());
@@ -273,6 +274,33 @@ public class ChangeLogReaderTest extends DbScriptsSpringTestCase {
             logger.error(k);
             fail("Threw exception");
         }
+    }
+
+    private InputStream buildInsertNode() {
+
+        String newInsertNode =
+                """
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+<changeSet author='invoicing' id='1'>
+		<insert tableName='BUY_SELL_CODE'>
+			<column name='CODE_CD' value='B'/>
+			<column name='CODE_LABEL' value='Buy'/>
+			<column name='DISPLAY_ORDER_NO' value='10'/>
+			<column name="LOCALE_LANGUAGE_CD" value="en"/>
+			<column name="LOCALE_COUNTRY_CD" value="CA"/>
+		</insert>
+		<insert tableName='BUY_SELL_CODE'>
+			<column name='CODE_CD' value='S'/>
+			<column name='CODE_LABEL' value='Sell'/>
+			<column name='DISPLAY_ORDER_NO' value='20'/>
+			<column name="LOCALE_LANGUAGE_CD" value="en"/>
+			<column name="LOCALE_COUNTRY_CD" value="CA"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>
+""";
+
+        return new ByteArrayInputStream(newInsertNode.getBytes());
     }
 
 }
