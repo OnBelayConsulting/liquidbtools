@@ -10,13 +10,20 @@ public class ChangeSet {
 
     private String id;
 
-    private String author = "onbelay";
+    private String author;
 
     private Boolean runAlways;
 
     private Boolean runOnChange;
 
     private List<MyNode> nodes = new ArrayList<>();
+
+    public ChangeSet() {
+    }
+
+    public ChangeSet(String author) {
+        this.author = author;
+    }
 
     public List<MyNode> getNodes() {
         return nodes;

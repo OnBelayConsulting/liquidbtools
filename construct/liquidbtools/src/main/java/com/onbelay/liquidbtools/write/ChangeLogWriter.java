@@ -18,7 +18,7 @@ public class ChangeLogWriter {
 
 
     private String logicalFilePrefix="com.onbelay";
-    private String applicationName;
+    private String applicationName = "onbelay";
 
     private OutputStream outputStream;
 
@@ -69,7 +69,7 @@ public class ChangeLogWriter {
                         "/" +
                         applicationName +
                         "/snapshot/dml/INSERT_" + tableName + ".xml");
-                ChangeSet changeSet = new ChangeSet();
+                ChangeSet changeSet = new ChangeSet(applicationName);
                 String fileRef = "INSERT_" + tableName;
                 log.addChangeSet(changeSet);
                 changeSet.setId(fileRef);
@@ -89,7 +89,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/sequences/sequences.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("sequences");
             for (CreateSequenceNode node : container.getSequences()) {
@@ -108,7 +108,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/tables/tables.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("tables");
             for (CreateTableNode node : container.getTables()) {
@@ -127,7 +127,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/tables/codes.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("codes");
             for (CreateTableNode node : container.getCodeTables()) {
@@ -147,7 +147,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/constraints/foreignkeyconstraints.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("fkconstraints");
             for (AddForeignKeyConstraintNode node : container.getForeignConstraints()) {
@@ -167,7 +167,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/constraints/uniqueconstraints.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("uniqueconstraints");
             for (AddUniqueConstraintNode node : container.getUniqueConstraints()) {
@@ -187,7 +187,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/indices/indices.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("indices");
             for (CreateIndexNode node : container.getIndices()) {
@@ -207,7 +207,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/snapshot/ddl/constraints/primarykeys.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setId("keys");
             for (AddPrimaryKeyNode node : container.getPrimaryKeys()) {
@@ -227,7 +227,7 @@ public class ChangeLogWriter {
                     "/" +
                     applicationName +
                     "/runalways/postchange/views/views.xml");
-            ChangeSet changeSet = new ChangeSet();
+            ChangeSet changeSet = new ChangeSet(applicationName);
             log.addChangeSet(changeSet);
             changeSet.setRunOnChange(true);
             changeSet.setRunAlways(true);
